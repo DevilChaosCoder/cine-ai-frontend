@@ -98,3 +98,34 @@ button.app-button:hover {
 .star-button:focus {
   transform: scale(1.2);
 }
+
+/* Add these new styles for the recommendation list */
+
+.recommendation-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #333;
+}
+
+.recommendation-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.rec-poster img {
+  width: 100px;
+  border-radius: 4px;
+  margin-right: 1.5rem;
+}
+
+.rec-details h4 {
+  margin-top: 0;
+  font-size: 1.2rem;
+}
+
+.rec-details p {
+  color: #aaa;
+  font-size: 0.9rem;
+}
