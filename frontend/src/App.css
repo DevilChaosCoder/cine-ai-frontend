@@ -1,38 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;700&display=swap');
+
+body {
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+  font-family: 'Crimson Text', serif;
+}
+
 .App {
   text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1, h2, h3 {
+  color: #9a4ca6; /* Muted Purple */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.movie-tile {
+  background-color: #2a2a2a;
+  border-radius: 8px;
+  padding: 1rem;
+  transition: transform 0.2s ease-in-out;
+}
+
+.movie-tile:hover {
+  transform: scale(1.05);
+}
+
+.movie-tile img {
+  width: 100%;
+  border-radius: 4px;
+}
+
+.movie-tile h4 {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  min-height: 40px;
+}
+
+.control-panel {
+  margin: 2rem 0;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 1rem;
 }
 
-.App-link {
-  color: #61dafb;
+button.app-button {
+  border: 2px solid #5c2c69;
+  background-color: transparent;
+  color: #e0e0e0;
+  padding: 0.75em 1.5em;
+  font-family: 'Crimson Text', serif;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+button.app-button:hover {
+  border-color: #c789d6;
+  background-color: #5c2c69;
+  color: #ffffff;
+}
+
+.recommendations-list {
+  text-align: left;
+  max-width: 800px;
+  margin: 2rem auto;
+  background-color: #2a2a2a;
+  padding: 2rem;
+  border-radius: 8px;
+}
+
+.star-rating {
+  display: flex;
+  justify-content: center;
+}
+
+.star-button {
+  background: none;
+  border: none;
+  color: #5c2c69; /* Empty star color */
+  font-size: 1.75rem;
+  cursor: pointer;
+  padding: 0 2px;
+  transition: color 0.2s;
+}
+
+.star-button:hover,
+.star-button:focus {
+  transform: scale(1.2);
 }
