@@ -3,7 +3,7 @@ import axios from 'axios';
 import StarRating from './StarRating';
 import './App.css';
 
-// FINAL, CORRECTED URL FOR YOUR LIVE BACKEND
+// Use your live backend URL from Render
 const API_BASE_URL = "https://cine-ai-backend.onrender.com";
 
 function App() {
@@ -14,7 +14,6 @@ function App() {
   const [error, setError] = useState('');
 
   const getNewMovies = () => {
-    // Note the added /api prefix
     axios.get(`${API_BASE_URL}/api/movies`)
       .then(response => {
         setMoviePool(response.data);
@@ -22,7 +21,7 @@ function App() {
       })
       .catch(error => {
         console.error("Error fetching movies:", error);
-        setError("Could not connect to the recommendation engine. The backend may be asleep, please wait and refresh.");
+        setError("Could not connect. The backend may be asleep, please wait a minute and refresh.");
       });
   };
 
@@ -45,7 +44,6 @@ function App() {
     setError('');
     setIsLoading(true);
     setRecommendations([]);
-    // Note the added /api prefix
     axios.post(`${API_BASE_URL}/api/recommend`, { ratings })
       .then(response => {
         setRecommendations(response.data);
@@ -97,17 +95,20 @@ function App() {
         </button>
       </div>
 
-      {recommendations.map((movie, index) => (
-  <div key={movie.title} className="recommendation-item">
-    <div className="rec-poster">
-      <img src={movie.Poster_Link} alt={`Poster for ${movie.title}`} />
-    </div>
-    <div className="rec-details">
-      <h4>{index + 1}. {movie.title}</h4>
-      <p>{movie.overview}</p>
-    </div>
-  </div>
-))}
+      {recommendations.length > 0 && (
+        <div className="recommendations-list">
+          <h2>The spirits have spoken! You may enjoy these apparitions:</h2>
+          {recommendations.map((movie, index) => (
+            <div key={movie.title} className="recommendation-item">
+              <div className="rec-poster">
+                <img src={movie.Poster_Link} alt={`Poster for ${movie.title}`} />
+              </div>
+              <div className="rec-details">
+                <h4>{index + 1}. {movie.title}</h4>
+                <p>{movie.overview}</p>
+              </div>
+            </div>
+          ))}
         </div>
       )}
     </div>
