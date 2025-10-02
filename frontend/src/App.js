@@ -97,16 +97,17 @@ function App() {
         </button>
       </div>
 
-      {recommendations.length > 0 && (
-        <div className="recommendations-list">
-          <h2>The spirits have spoken! You may enjoy these apparitions:</h2>
-          {recommendations.map((movie, index) => (
-            <div key={movie.title}>
-              <h4>{index + 1}. {movie.title}</h4>
-              <p>{movie.overview}</p>
-              <hr style={{borderColor: '#333'}}/>
-            </div>
-          ))}
+      {recommendations.map((movie, index) => (
+  <div key={movie.title} className="recommendation-item">
+    <div className="rec-poster">
+      <img src={movie.Poster_Link} alt={`Poster for ${movie.title}`} />
+    </div>
+    <div className="rec-details">
+      <h4>{index + 1}. {movie.title}</h4>
+      <p>{movie.overview}</p>
+    </div>
+  </div>
+))}
         </div>
       )}
     </div>
